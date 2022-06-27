@@ -1,0 +1,113 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">
+				<h2 th:value="${title}"></h2>
+			</div>
+			<div class="card-body">
+				<div th:object="${student}" th:remove="tag">
+					<ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+						role="alert">
+						<li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+					</ul>
+				</div>
+
+
+				<form th:object="${student}" th:action="@{/estudiantes/registrar}"
+					th:method="post">
+					<div class="form-group">
+						<input type="hidden" class="form-control" th:field="*{IdStudent}" />
+					</div>
+
+					<div class="form-group">
+						<label for="FirstName">Nombre</label> <input type="text"
+							class="form-control" id="FirstName" aria-describedby="FirstName"
+							th:field="*{FirstName}" placeholder="type here ..." />
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('FirstName')}"
+								th:errors="*{FirstName}"></small>	
+					</div>
+
+					<div class="form-group">
+						<label for="LastName">Apellido</label> <input type="text"
+							class="form-control" id="LastName" aria-describedby="LastName"
+							th:field="*{LastName}" placeholder="type here ..." />		
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('LastName')}"
+								th:errors="*{LastName}"></small>	
+					</div>
+
+					<div class="form-group">
+						<label for="Dni">DNI</label> 
+						<input type="text"
+							class="form-control" id="Dni" aria-describedby="Dni"
+							th:field="*{Dni}" placeholder="type here ..." />
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('Dni')}"
+								th:errors="*{Dni}"></small>			
+								
+					</div>
+					
+						<div class="form-group">
+						<label for="Email">Email</label> <input type="text"
+							class="form-control" id="Email" aria-describedby="Email"
+							th:field="*{Email}" placeholder="type here ..." />		
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('Email')}"
+								th:errors="*{Email}"></small>	
+					</div>
+					
+					<div class="form-group">
+						<label for="Rubro">Rubro</label> <input type="text"
+							class="form-control" id="Rubro" aria-describedby="Rubro"
+							th:field="*{Rubro}" placeholder="type here ..." />		
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('Rubro')}"
+								th:errors="*{Rubro}"></small>	
+					</div>
+					
+					<div class="form-group">
+						<label for="Categoria">Categoria</label> <input type="checkbox"
+							class="form-control" id="Categoria" aria-describedby="Categoria"
+							th:field="*{Categoria}" placeholder="type here ..." />	
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('Categoria')}"
+								th:errors="*{Categoria}"></small>		
+					</div>
+					
+					<div class="form-group">
+						<label for="Numero">Numero</label> <input type="text"
+							class="form-control" id="Numero" aria-describedby="Numero"
+							th:field="*{Numero}" placeholder="type here ..." />	
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('Numero')}"
+								th:errors="*{Numero}"></small>		
+					</div>
+						<div class="form-group">
+						<label for="Contrasenia">Contrasenia</label> <input type="text"
+							class="form-control" id="Contrasenia" aria-describedby="Contrasenia"
+							th:field="*{Contrasenia}" placeholder="type here ..." />	
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('Contrasenia')}"
+								th:errors="*{Contrasenia}"></small>		
+					</div>
+					
+				
+										
+					<div class="form-group row">						
+						<div class="col-sm-6">
+							<input type="submit" value="Guardar" class="btn btn-secondary"></input> 							
+						</div>
+					</div>		
+					
+					
+	         </form>
+
+			</div>
+			<p th:text="${mensaje}" class="form-text text-success"></p>
+		</div>
+
+
+	
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

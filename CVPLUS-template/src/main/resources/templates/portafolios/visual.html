@@ -1,0 +1,88 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+		<div class ="card" style="max-width: 100%;">
+			<div class="card-header">
+				<h2 style="text-align: center; color: #3f7320;">
+					Detalle del portafolio
+				</h2>
+			</div>
+			<div class ="card-body">
+				<form th:object="${portafolio}"
+				th:action="@{/portafolios/update/{id}(id=${portafolio.id})}"
+				th:method="post">
+					<div class="form-group">
+						<input type="hidden" class="form-control" th:field="*{id}" />
+					</div>
+					<div class="form-group">
+						<label for="codigo">Codigo: </label> 
+							<output type="text" class="form-control" 
+							id="codigo"	aria-describedby="codigo" 
+							th:text="${portafolio.id}"></output>
+					</div>
+					
+					<div class="form-group">
+						<label for="nombre">Nombre del Portafolio: </label> 
+							<output type="text" class="form-control" 
+							id="nombre"	aria-describedby="nombre" 
+							th:text="${portafolio.nombre}"></output>
+					</div>
+					
+					<div class="form-group">
+						<label for="nombre">Pertenece a:  </label> 
+			
+						<th:block  th:each="student,iter:${portafolio.students}">
+						
+							<output type="text" class="form-control" 
+								id="nombre"	aria-describedby="nombre" 
+								th:text="${student.firstName}"></output>
+						
+								</th:block>
+						
+
+					</div>
+					<div class="form-group">
+						<label for="nombre">Descripcion de proyectos::  </label> 
+							<table class="table table-striped">
+			<!--  -->		<thead class="thead-dark">
+						<tr>
+							<th scope="col">ID</th>
+							<th>Titulo</th>
+							<th>Descripcion</th>
+							<th>Colaborador(es)</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<tr >
+							<td >HAMP</td>
+							<td >titleProyect</td>
+							<td >Este proyecto consiste en .......</td>
+							<td >C1 ,C2</td>
+						</tr>
+					</tbody>
+				</table>
+					</div>
+					
+				</form>
+				
+			</div>
+			<div class ="card-footer">
+				<a th:href="@{/portafolios/}" class="btn btn-success">Listo!</a>
+				<a th:href="@{'/portafolios/comment/'+${portafolio.id}}"
+								class="btn btn-danger">Valorar</a>
+			</div>
+			
+			
+		
+		</div>
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

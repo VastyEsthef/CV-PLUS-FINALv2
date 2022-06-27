@@ -1,0 +1,57 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="Fragments/head"></th:block>
+<body>
+
+	<th:block th:include="Fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Lista de Asesorías</div>
+			<div class="card-body">
+
+				<a th:href="@{/views/students/advisory/new}" class="btn btn-primary">Nuevo</a>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>							
+							<th scope="col">#</th>
+							<th scope="col">Nombre del estudiante</th>
+							<th>Día de la semana</th>
+							<th>Servicio x Asesor</th>
+							<th colspan="2">Operación</th>
+															
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="advisory : ${advisory_collection}">
+
+							<td th:text="${advisory.idAsesoria}"></td>
+							<td th:text="${advisory.student.toString()}"></td>
+							<td th:text="${advisory.dia}"></td>
+							<td th:text="${advisory.servicioAdviser.toString()}"></td>	
+							<td>
+								<a  th:href="@{'/views/students/advisory/edit/'+ ${advisory.idAsesoria}}"
+									th:text="Editar"
+									class="btn btn-success btn-sm"
+									title = "titulo">
+								</a>
+							</td>
+							<td><a  th:href="@{'/views/students/advisory/delete/'+ ${advisory.idAsesoria}}"
+									th:text="Eliminar"
+									class="btn btn-danger btn-sm"
+									title = "Eliminar asesoría"
+									onclick="return confirm('Seguro que desea eliminar este registro?')">
+								</a>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

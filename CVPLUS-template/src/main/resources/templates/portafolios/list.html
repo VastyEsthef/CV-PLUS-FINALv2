@@ -1,0 +1,76 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">
+				<h1 style="text-align: center; color: #3f7320;">
+					<span style="border-bottom: 4px solid #c82828;">Lista de
+						Portafolios de CV+ 
+				</h1>
+			</div>
+
+			<div class="card-body">
+
+				<label>Ordenar por:</label>
+				<form th:action="@{/portafolios/ordenarValoracion}" method="get"
+					th:object="${portafolio}">
+
+					<button type="ordenarV" class="btn btn-success btn-sm">
+						Valoracion <i aria-hidden="true"></i>
+					</button>
+				</form>
+				<p></p>
+				<form th:action="@{/portafolios/ordenarNombre}" method="get"
+					th:object="${portafolio}">
+
+					<button type="ordenarN" class="btn btn-warning btn-sm ">
+						Nombre <i aria-hidden="true"></i>
+					</button>
+				</form>
+				<p></p>
+				<form th:action="@{/portafolios/ordenarCodigo}" method="get"
+					th:object="${portafolio}">
+
+					<button type="ordenarC" class="btn btn-secondary btn-sm">
+						Codigo <i aria-hidden="true"></i>
+					</button>
+				</form>
+				<p></p>
+
+
+				<table class="table table-striped">
+					<!--  -->
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">ID</th>
+							<th>Portafolio</th>
+							<th>Accion</th>
+							<th>Detalle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<tr th:each="portafolio:${portafolios}">
+							<td th:text="${portafolio.id}"></td>
+							<td th:text="${portafolio.nombre}"></td>
+							<td><a th:href="@{'/portafolios/visual/'+${portafolio.id}}"
+								class="btn btn-primary">Explorar</a></td>
+							<td><a th:href="@{'/portafolios/comment/'+${portafolio.id}}"
+								class="btn btn-danger">Valoracion</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

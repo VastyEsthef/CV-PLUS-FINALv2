@@ -1,0 +1,82 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">
+				<h1 style="text-align: center; color: #3f7320;">
+					<span style="border-bottom: 4px solid #c82828;">Lista de
+						postulantes de CV+ 
+				</h1>
+			</div>
+
+			<div class="card-body">
+			
+				<form th:action="@{/estudiantes/buscar}" method="post" th:object="${student}" class="form-inline">
+					<div class="form-group">
+						<label for="buscar">Valoracion:</label> 
+						<input
+							type="text" class="form-control" id="buscar"
+							 
+							required="required"
+							placeholder="Ingrese nombre del estudiante"> 
+					</div>
+					<button type="submit" class="btn btn-danger">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+					
+				</form>
+
+
+
+				<table class="table table-striped">
+					<!--  -->
+					<thead class="thead-dark">
+						<tr>
+							<th scope="col">ID</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Portafolio</th>
+							<th>Visuailizar</th>
+							<th>Valoracion</th>
+
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+						<tr th:each="student:${students}">
+							<td th:text="${student.id}"></td>
+							<td th:text="${student.firstName}"></td>
+							<td th:text="${student.lastName}"></td>
+							<td><th:block
+									th:each="portafolio,iter:${student.portafolios}">
+									<label th:text="${portafolio.nombre}" />
+									<th:block th:if="${!iter.last}">,</th:block>
+
+								</th:block></td>
+							<td><a th:href="@{'/portafolios/visual/'+${student.id}}"
+								class="btn btn-primary">Explorar </a></td>
+
+							<td><th:block
+									th:each="portafolio,iter:${student.portafolios}">
+									<label th:text="${portafolio.valoracion}" />
+									<th:block th:if="${!iter.last}">,</th:block>
+
+								</th:block></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

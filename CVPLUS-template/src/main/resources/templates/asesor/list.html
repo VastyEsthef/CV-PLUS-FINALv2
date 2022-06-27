@@ -1,0 +1,64 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="Fragments/head"></th:block>
+<body>
+
+	<th:block th:include="Fragments/navbar"></th:block>
+	<div class="container">
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Listado de asesores</div>
+			<div class="card-body">
+
+				<form th:action="@{/asesors/buscar}" method="post"
+					th:object="${asesor}" class="form-inline">
+					<div class="form-group">
+						<label for="buscar">Buscar un Asesor :</label> <input type="text"
+							class="form-control" id="buscar" 
+							th:field="*{dni}"
+							required="required" 
+							placeholder="Ingrese dni del asesor">
+					</div>
+
+					<button type="submit" class="btn btn-danger">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+
+				</form>
+
+
+				<a th:href="@{/asesors/nuevo}" class="btn btn-primary">Nuevo</a>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th>Asesor</th>
+							<th>Dni</th>
+							<th>Fecha de Licenciatura</th>
+							<th>Edad</th>
+							<th>Anhos de experiencia</th>
+							<th>Tarifa</th>
+							<th>Rubro</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="asesor : ${asesores}">
+							<td th:text="${asesor.id}">1</td>
+							<td th:text="${asesor.nombreCompleto}">CRR</td>
+							<td th:text="${asesor.dni}">CRR</td>
+							<td
+								th:text="${#dates.format(asesor.fechaLicenciado, 'dd/MM/yyyy')}">CRR</td>
+							<td th:text="${asesor.edad}">CRR</td>
+							<td th:text="${asesor.tiempoExperiencia}">CRR</td>
+							<td
+								th:text="${#numbers.formatDecimal(asesor.tarifaHora,2,'COMMA',2,'POINT')}">CRR</td>
+
+							<td th:text="${asesor.rubro.nombre}">CRR</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<th:block th:include="Fragments/scripts"></th:block>
+</body>
+</html>

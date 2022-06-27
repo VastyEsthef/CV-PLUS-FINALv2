@@ -1,0 +1,61 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Listado de Empresas</div>
+			<div class="card-body">
+
+
+				<form th:action="@{/empresas/buscar}" method="post" th:object="${empresa}" class="form-inline">
+					<div class="form-group">
+						<label for="buscar">Buscar</label> 
+						<input
+							type="text" class="form-control" id="buscar"
+							th:field="*{ruc}" 
+							required="required"
+							placeholder="Ingrese Ruc"> 
+					</div>
+					
+					<button type="submit" class="btn btn-danger">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+					
+				</form>
+
+				<a th:href="@{/empresas/new}" class="btn btn-primary">Nuevo</a>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th>Nombre</th>
+							<th>Ruc</th>
+							<th>Telefono</th>
+							<th>Email</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="empresa : ${empresas}">
+							<td th:text="${empresa.IdEmpresa}">1</td>
+							<td th:text="${empresa.Nombre_Empresa}">HAMP</td>
+							<td th:text="${empresa.Ruc}">HAMP</td>
+							<td th:text="${empresa.NumTelf}">HAMP</td>
+							<td th:text="${empresa.Email_Empresa}">HAMP</td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

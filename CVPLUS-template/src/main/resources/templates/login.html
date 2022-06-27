@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html xmlns:th="thymeleaf.org">
+
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>CVpluss</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<!--  Fonts and icons     -->
+<link
+	href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Muli:400,300'
+	rel='stylesheet' type='text/css'>
+
+</head>
+<body>
+<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-sm-4"></div>
+			<div class="col-sm-4">
+				<form th:action="@{/login}" method="post">
+					<div class="form-group">
+						<h5 class="mb-3">Login</h5>
+						<label for="username">Username:</label> <input type="text"
+							name="username" id="username" class="form-control mb-2" required></input>
+						<label for="password">Password:</label> <input name="password"
+							id="password" type="password" class="form-control mb-2" required></input>
+					</div>
+					<button type="submit" class="btn btn-primary mb-2">Iniciar
+						Sesi&oacute;n</button>
+					<br> <a th:href="@{/users/new}">Registrarme</a>
+				</form>
+			</div>
+			<div class="col-sm-4"></div>
+		</div>
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+	
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="Fragments/head"></th:block>
+<body>
+
+	<th:block th:include="Fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Registrar Asesoría</div>
+			<div class="card-body">
+
+				<form th:object="${advisory}" th:action="@{/views/students/advisory/save}"
+					method="post">
+					
+					
+					<div class="form-group row">
+						<label for="student" class="col-sm-2 col-form-label">Alumno:</label>
+						<div class="col-sm-6">
+							<select class="form-control col-md-6" th:field = "*{student.idStudent}">
+								<option th:each="st: ${students}"
+									th:value="${st.idStudent}" 
+									th:text="${st.firstName + ' ' + st.lastName}"
+									th:selected="(${st.idStudent} == *{student.idStudent})">
+								</option>
+							</select>
+							
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="day" class="col-sm-2 col-form-label">D�a:</label>
+						<div class="col-sm-6">
+							<select id="items" th:field="*{dia}"
+								class="form-control form-control-sm col-md-6">
+								<option value="Lunes">Lunes</option>
+								<option value="Martes">Martes</option>
+								<option value="Miercoles">Mi�rcoles</option>
+								<option value="Jueves">Jueves</option>
+								<option value="Viernes">Viernes</option>
+									
+							</select> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('dia')}"
+								th:errors="*{dia}"></small>
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="sxa" class="col-sm-2 col-form-label">Asesoría disponible:</label>
+						<div class="col-sm-6">
+							<select class="form-control col-md-6" th:field = "*{servicioAdviser.idServicioAdviser}">
+								<option 
+									th:each="sxa: ${servicioAdvisers}"
+									th:value="${sxa.idServicioAdviser}" 
+									th:text="${sxa.toString()}">
+									
+								</option>
+							</select>
+							
+						</div>
+					</div>
+					
+
+				
+					<div class="form-group row">
+						<div class="col-sm-6">
+							<input type="submit" class="btn btn-success" value="Guardar">
+							<a th:href="@{/views/students/advisory/list}" class="btn btn-danger">Cancelar</a>
+						</div>
+					</div>
+				</form>
+				<p th:text="${mensaje}" class="form-text text-danger"></p>
+			</div>
+		</div>
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

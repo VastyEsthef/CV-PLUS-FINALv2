@@ -1,0 +1,50 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">¿Que le ha parecido el portafolio?</div>
+			<div class="card-body">
+				<form th:object="${portafolio}"
+					th:action="@{/portafolios/update/{id}(id=${portafolio.id})}"
+					th:method="post">
+					<div class="form-group">
+						<input type="hidden" class="form-control" th:field="*{id}" />
+					</div>
+					<div class="form-group">
+						<label for="nombre">Nombre Portafolio</label>
+						<output type="text" class="form-control" id="nombre"
+							aria-describedby="nombre" th:text="${portafolio.nombre}"></output>
+					</div>
+					<div class="form-group">
+						<label for="comentario">Comentario</label>
+						<textarea rows="4" type="textarea" class="form-control"
+							id="comentario" th:field="*{comentario}"
+							placeholder="Escriba aqui sus comentarios u opiniones acerca del portafolio" /></textarea>
+					</div>
+
+					<div class="form-group">
+						<label for="valoracion">Puntuacion</label>
+						<input type="text"  id="valoracion" th:field="*{valoracion}" 
+						placeholder="Ingrese una calificacion de 0 a 10" ></p>
+
+					</div>
+
+					<a th:href="@{/portafolios/}" class="btn btn-primary">Atras</a>
+					<button type="submit" class="btn btn-success">Guardar</button>
+
+				</form>
+
+			</div>
+		</div>
+
+
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

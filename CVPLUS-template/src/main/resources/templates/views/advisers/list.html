@@ -1,0 +1,59 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="Fragments/head"></th:block>
+<body>
+
+	<th:block th:include="Fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Asesorías x Asesor</div>
+			<div class="card-body">
+
+				<a th:href="@{/servicesxadvisers/new}" class="btn btn-primary">Nuevo</a>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>							
+							<th scope="col">#</th>
+							<th>Nombre de Asesoría</th>
+							<th>Nombre Asesor</th>
+							<th>Apellido Asesor</th>
+							<th>Hora Inicio</th> 
+							<th>Hora Fin</th>
+							<th>Editar</th>
+							<th>Eliminar</th>								
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="sxa : ${sxa_collection}">
+
+							<td th:text="${sxa.idServicioAdviser}">1</td>
+							 <td th:text="${sxa.servicio.serviceName}"></td>
+							<td th:text="${sxa.adviser.firstName}"></td>
+							<td th:text="${sxa.adviser.lastName}">HAMP</td>
+							<td th:text="${sxa.horaInicio}">HAMP</td> 
+							<td th:text="${sxa.horaFin}">HAMP</td>
+							<td>
+								<a class="btn btn-success btn-sm" 
+									th:href="@{/servicesxadvisers/edit/} + ${sxa.idServicioAdviser}"
+									th:text="Editar" title="titulo">
+								</a>
+							</td>
+							<td>
+								<a class="btn btn-danger btn-sm" th:href="@{/servicesxadvisers/delete/}+ ${sxa.idServicioAdviser}"
+									th:text="Eliminar" title="Eliminar Registro"
+									onclick="return confirm('Seguro que desea eliminar este registro?')">
+								</a>
+							</td>
+<!-- 						</tr>
+<!-- 					</tbody> -->
+				</table>
+			</div>
+		</div>
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

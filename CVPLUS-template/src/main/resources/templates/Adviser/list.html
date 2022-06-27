@@ -1,0 +1,65 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Listado de Asesores</div>
+			<div class="card-body">
+
+
+				<form th:action="@{/advisers/buscar}" method="post" th:object="${adviser}" class="form-inline">
+					<div class="form-group">
+						<label for="buscar">Buscar</label> 
+						<input
+							type="text" class="form-control" id="buscar"
+							th:field="*{Dni_As}" 
+							required="required"
+							placeholder="Ingrese DNI"> 
+					</div>
+					
+					<button type="submit" class="btn btn-danger">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+					
+				</form>
+
+				<a th:href="@{/advisers/new}" class="btn btn-primary">Nuevo</a>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Email</th>
+							<th>DNI</th>
+							<th>Telefono</th>
+							
+			
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="adviser : ${advisers}">
+							<td th:text="${adviser.IdAdviser}">1</td>
+							<td th:text="${adviser.First_NameAs}">HAMP</td>
+							<td th:text="${adviser.Last_NameAs}">HAMP</td>
+							<td th:text="${adviser.Email_As}">HAMP</td>
+							<td th:text="${adviser.Dni_As}">HAMP</td>
+							<td th:text="${adviser.Num_Cel_As}">HAMP</td>
+							
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

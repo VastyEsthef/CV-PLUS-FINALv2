@@ -1,0 +1,71 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Lista de Estudiantes</div>
+			<div class="card-body">
+				
+				<form th:action="@{/estudiantes/buscar}" method="post" th:object="${student}" class="form-inline">
+                    <div class="form-group">
+                        <label for="buscar">Buscar</label> 
+                        <input
+                            type="text" class="form-control" id="buscar"
+            				field="*{Dni}" 
+                            required="required"
+                            placeholder="Ingrese DNI"> 
+                    </div>
+
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-search" aria-hidden="true"></i>
+                    </button>
+
+             </form>	
+				<a th:href="@{/estudiantes/new}" class="btn btn-primary">Nuevo</a>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>Dni</th>
+							<th>email</th>
+							<th>numero</th>
+							<th>Rubro</th>
+							<th>Premium</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
+							
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="student : ${students}">
+							<td th:text="${student.IdStudent}">1</td>
+							<td th:text="${student.FirstName}">HAMP</td>
+							<td th:text="${student.LastName}">HAMP</td>
+							<td th:text="${student.Dni}">HAMP</td>
+							<td th:text="${student.Email}">HAMP</td>
+							<td th:text="${student.Numero}">HAMP</td>
+							<td th:text="${student.Rubro}">HAMP</td>
+							<td th:text="${student.Categoria}">HAMP</td>
+						
+							<td><a th:href="@{'/estudiantes/edit/'+ ${student.IdStudent}}"
+								class="btn btn-success">Editar</a></td>
+							<td><a th:href="@{/estudiantes/eliminar?id=}+${student.IdStudent}"
+								class="btn btn-danger">Eliminar</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+	</div>
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<th:block th:include="Fragments/head"></th:block>
+<body>
+        <th:block th:include="Fragments/navbar"></th:block>
+	<div class="container">
+
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Registro de Portafolios</div>
+			<div class="card-body">
+   
+   
+      <form th:action="@{/portafolios2/buscar}" method="POST" th:object="${portafolio}" class="form-inline">
+					<div class="form-group">
+						<label for="buscar">Buscar</label> 
+						<input
+							type="text" class="form-control" id="buscar"
+							th:field="*{NombrePortafolio}"
+							required="required"
+							placeholder="Ingrese el nombre"> 
+					</div>
+					
+					<button type="submit" class="btn btn-danger">
+						<i class="fa fa-search" aria-hidden="true"></i>
+					</button>
+					
+				</form>
+   
+   
+
+   <a th:href="@{/portafolios2/form}" class="btn btn-primary">Nuevo Portafolio</a>
+   
+  <table class="table table-striped"> 
+       <thead>
+          <tr>
+            
+             <th>Nombre</th>
+             <th>Descripcion</th>
+             <th>Acciones</th>
+          
+          </tr>
+       
+       
+       </thead>
+       <tbody>
+             <tr th:each="portafolio:${portafolios}">
+                 
+                  <td th:text="${portafolio.NombrePortafolio}">HAMP</td>
+                  <td th:text="${portafolio.DescripcionPortafolio}">HAMP</td>
+              
+                  <td>
+                     <a th:href="@{/portafoliosJ/edit/{id}(id=${portafolio.IdPortafolio})}"
+					class="btn btn-primary">Update</a> <a
+					th:href="@{/portafoliosJ/{id}(id=${portafolio.IdPortafolio})}"
+					class="btn btn-danger">Delete</a>
+                  
+                  
+                  </td>
+             
+                  
+             </tr>
+             
+			
+       </tbody>
+       
+  </table>
+  </div>
+ </div>
+</div>
+<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

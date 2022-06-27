@@ -1,0 +1,64 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+<body>
+
+	<th:block th:include="fragments/navbar"></th:block>
+	<div class="container">
+		<div class="card" style="max-width: 100%;">
+			<div class="card-header">Registrar</div>
+			<div class="card-body">
+			///	<form th:object="${adviser}" th:action="@{/advisers/registrar}"
+					th:method="post">
+					<div class="form-group row">
+						<label for="" class="col-sm-2 col-form-label">Nombre de Habilidad</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="nombreHabilidad"
+								th:field="*{nombreHabilidad}" />
+								
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('nombreHabilidad')}"
+								th:errors="*{nombreHabilidad}"></small>							
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="descripcionHabilidad" class="col-sm-2 col-form-label">Descripción:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="descripcionHabilidad"
+								th:field="*{descripcionHabilidad}" />
+								
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('descripcionHabilidad')}"
+								th:errors="*{descripcionHabilidad}"></small>							
+						</div>
+					</div>
+					
+					<div class="form-group row">
+						<label for="nivelHabilidad" class="col-sm-2 col-form-label">Fecha de Inicio:</label>
+						<div class="col-sm-6">
+							<input type="text" class="form-control" id="nivelHabilidad"
+								th:field="*{nivelHabilidad}" />
+								
+							<small class="form-text text-danger" th:if="${#fields.hasErrors('nivelHabilidad')}"
+								th:errors="*{nivelHabilidad}"></small>							
+						</div>
+						
+						
+					</div>
+
+										
+					<div class="form-group row">						
+						<div class="col-sm-6">
+							<input type="submit" value="Guardar" class="btn btn-secondary"></input> 							
+						</div>
+					</div>		
+
+				</form>
+
+			</div>
+			<p th:text="${mensaje}" class="form-text text-success"></p>
+		</div>
+	</div>
+
+	<th:block th:include="fragments/scripts"></th:block>
+
+</body>
+</html>

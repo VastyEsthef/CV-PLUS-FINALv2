@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<footer th:fragment="footer"
+		class="ftco-footer ftco-bg-dark ftco-section">
+
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-5">
+						<h2 class="ftco-heading-2 logo">
+							<img
+								src="https://censaindustrial.com/wp-content/uploads/2019/10/IM.png"
+								width=25px height=25px> CVPlus
+						</h2>
+						<p class="text-footer">CV Plus es una aplicación ...</p>
+					</div>
+
+				</div>
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-5 ml-md-4">
+						<h2 class="ftco-heading-2">Funciones</h2>
+						<ul class="list-unstyled">
+							<li id="element-list-foot"><span
+								class="ion-ios-arrow-round-forward mr-2"></span>Registro de
+								usuarios</li>
+							<li id="element-list-foot"><span
+								class="ion-ios-arrow-round-forward mr-2"></span>Asesorias por expertos</li>
+							<li id="element-list-foot"><span
+								class="ion-ios-arrow-round-forward mr-2"></span>Visualizacion de empresas</li>
+							<li id="element-list-foot"><span
+								class="ion-ios-arrow-round-forward mr-2"></span>Evaluacion de portafolio</li>
+							<li id="element-list-foot"><span
+								class="ion-ios-arrow-round-forward mr-2"></span>Potenciacion de CV</li>
+
+						</ul>
+					</div>
+				</div>
+				
+				<div class="col-md">
+					<div class="ftco-footer-widget mb-5">
+						<h2 class="ftco-heading-2">Conocenos</h2>
+						<p class="text-footer">Nuestro correo:
+						cvplusperu2022@gmail.com</p>
+						<form action="#" class="subscribe-form">
+							<div class="form-group">
+								<input id="tbx_consulta" type="text" class="form-control mb-2 text-center"
+									placeholder="Escribe tu consulta"> <a onclick="consulta()"><button id="consulta" class="form-control submit px-3">Enviar</button></a>
+									<p id="confirmacion" class="text-footer"></p>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-center">
+
+					<p>
+						Copyright &copy;
+						<script>
+							document.write(new Date().getFullYear());
+						</script>
+						All rights reserved | CV Plus Business
+					</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="/js/popper.min.js"></script>
+	<script src="/js/bootstrap.min.js"></script>
+	<script src="/js/jquery.easing.1.3.js"></script>
+	<script src="/js/jquery.waypoints.min.js"></script>
+	<script src="/js/jquery.stellar.min.js"></script>
+	<script src="/js/owl.carousel.min.js"></script>
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<script src="/js/aos.js"></script>
+	<script src="/js/jquery.animateNumber.min.js"></script>
+	<script src="/js/bootstrap-datepicker.js"></script>
+	<script src="/js/jquery.timepicker.min.js"></script>
+	<script src="/js/scrollax.min.js"></script>
+	<script src="/js/sweetalert2.js"></script>
+	<script
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"
+		async></script>
+	<script src="/js/google-map.js" async></script>
+	<script src="/js/main.js" async></script>
+	<script type="text/javascript">
+	function consulta(){
+		document.getElementById("tbx_consulta").value="";
+		document.getElementById("confirmacion").innerHTML="¡Gracias por tu consulta!";
+		}
+	</script>
+</html>
