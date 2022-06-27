@@ -17,8 +17,6 @@ public interface PortafolioRepository2 extends JpaRepository<Portafolio2, Long> 
     @Query("FROM Portafolio2 p WHERE p.NombrePortafolio like :NombrePortafolio")
     List<Portafolio2> buscarPortafolio(@Param("NombrePortafolio") String NombrePortafolio);
 
-    //@Query("SELECT p FROM Portafolio p  WHERE p.NombrePortafolio=?1")
-    //public List<Portafolio> buscarPortafolio(String NombrePortafolio);
 
 
 
