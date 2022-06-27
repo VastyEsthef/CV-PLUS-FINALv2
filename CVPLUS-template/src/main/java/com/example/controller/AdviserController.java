@@ -46,8 +46,8 @@ public class AdviserController {
 			return "Adviser/form";
 		}
 	
-		rpta=adviserService.registrarAdvisers(adviser);
-		
+		//rpta=adviserService.registrarAdvisers(adviser);
+		rpta=1;
 		if(rpta>0) {
 			model.addAttribute("mensaje", "El numero de DNI ya existe");
 			
@@ -64,7 +64,7 @@ public class AdviserController {
 	
 	@PostMapping("/buscar")
 	public String buscarEmpresa(Model model, @ModelAttribute Adviser adviser) {		
-		model.addAttribute("advisers",adviserService.buscarAdviserPorDni(adviser.getDni_As()));
+	//	model.addAttribute("advisers",adviserService.buscarAdviserPorDni());
 		return "Adviser/list";
 	}
 	

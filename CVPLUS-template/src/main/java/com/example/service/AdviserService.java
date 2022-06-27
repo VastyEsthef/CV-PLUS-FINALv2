@@ -24,14 +24,14 @@ public class AdviserService{
 	}
 	
 	
-	public int registrarAdvisers(Adviser adviser) {
-		int existeAdviser=adviserRepository.verificarExistenciaAdviser(adviser.getDni_As());
+	//public int registrarAdvisers(Adviser adviser) {
+		//int existeAdviser=adviserRepository.verificarExistenciaAdviser(adviser.getDni_As());
 		
-		if(existeAdviser==0)
-			adviserRepository.save(adviser);
+		//if(existeAdviser==0)
+		//	adviserRepository.save(adviser);
 		
-		return existeAdviser;
-	}
+		//return existeAdviser;
+//	}
 	
 	
 	public List<Adviser> buscarAdviserPorDni(String Dni_As){
